@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "something",
+  "version": "${version}",
+  "name": "something",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/something/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "devghurt.something.Main"
+    ]
+  },
+  "mixins": [
+    "something.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "~26.2",
+    "fabric-api": "*"
+  }
+}
