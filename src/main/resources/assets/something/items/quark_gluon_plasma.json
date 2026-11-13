@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "something:item/quark_gluon_plasma"
+  }
+}

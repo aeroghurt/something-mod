@@ -2,6 +2,8 @@ package devghurt.something;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.api.registry.CompostableRegistry;
+import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -34,14 +36,21 @@ public class ModItems {
             .displayItems((_, output) -> {
                 output.accept(ModItems.SUSPICIOUS_SUBSTANCE);
                 output.accept(ModItems.POISONOUS_APPLE);
-    })
-    .build();
+                output.accept(ModItems.QUARK_GLUON_PLASMA);
+            })
+            .build();
 
     public static void initialize() {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
                 .register((creativeTab) -> creativeTab.accept(ModItems.SUSPICIOUS_SUBSTANCE));
 
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, CUSTOM_CREATIVE_TAB_KEY, CUSTOM_CREATIVE_TAB);
+
+        FuelValueEvents.BUILD.register((builder, context) -> {
+            builder.add(ModItems.QUARK_GLUON_PLASMA, 120 * 20);
+        });
+
+        CompostableRegistry.INSTANCE.add(ModItems.BONE_MARROW, 1.0f);
     }
 
     public static final Consumable POISON_FOOD_CONSUMABLE_COMPONENT = Consumables.defaultFood()
@@ -62,5 +71,17 @@ public class ModItems {
             ModItemIds.POISONOUS_APPLE,
             Item::new,
             new Item.Properties().food(POISON_FOOD_COMPONENT, POISON_FOOD_CONSUMABLE_COMPONENT)
+    );
+
+    public static final Item QUARK_GLUON_PLASMA = register(
+            ModItemIds.QUARK_GLUON_PLASMA,
+            Item::new,
+            new Item.Properties()
+    );
+
+    public static final Item BONE_MARROW = register(
+            ModItemIds.BONE_MARROW,
+            Item::new,
+            new Item.Properties()
     );
 }

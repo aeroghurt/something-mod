@@ -12,4 +12,8 @@ public class ModItemIds {
     public static final ResourceKey<Item> SUSPICIOUS_SUBSTANCE = create("suspicious_substance");
 
     public static final ResourceKey<Item> POISONOUS_APPLE = create("poisonous_apple");
+
+    public static final ResourceKey<Item> QUARK_GLUON_PLASMA = create("quark_gluon_plasma");
+
+    public static final ResourceKey<Item> BONE_MARROW = create("bone_marrow");
 }
